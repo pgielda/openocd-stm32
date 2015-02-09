@@ -962,7 +962,23 @@ static int get_stm32x_info(struct flash_bank *bank, char *buf, int buf_size)
 			break;
 		}
 		break;
+        case 0x449:
+                 device_str = "STM32F7xx";
 
+                 switch (rev_id) {
+                 case 0x1000:
+                         rev_str = "A";
+                         break;
+
+                 case 0x1001:
+                         rev_str = "Z";
+                         break;
+
+                 case 0x1003:
+                        rev_str = "Y";
+                         break;
+                 }
+                 break;
 	default:
 		snprintf(buf, buf_size, "Cannot identify target as a STM32F2/4\n");
 		return ERROR_FAIL;
